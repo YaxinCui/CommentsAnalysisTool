@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 import pandas as pd
+import numpy as np
 
 
 class CommentAnalyse(metaclass=ABCMeta):
@@ -10,14 +11,14 @@ class CommentAnalyse(metaclass=ABCMeta):
     2. 对评论进行分析，目前包括是否为建议，是消极还是积极，提取关键词信息
     3. 可视化展示，存入文件
     """
-    def __init__(self, columns=['comments',  'is_suggestion', 'sentiment']):
+    def __init__(self,comment_list=[], columns=['comment',  'is_suggestion', 'sentiment']):
         """
         :param length: comments表格长度
         :param columns: comments类型为文本，表示评论文本，is_suggestion为是否为评论，类型为数字0.0-1.0，sentiment为是积极还是消极，类型为数字0.0-1.0
         """
         self.columns = columns
-        self.comments = pd.DataFrame(columns=columns)
-        self.comments['comments'] = self.comments['comments'].astype(str)
+        self.comments = pd.DataFrame(data={'comment': comment_list}, columns=columns)
+        print(self.comments.dtypes)
 
     @abstractmethod
     def get_comments(self):

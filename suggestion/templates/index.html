@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>欢迎使用评论分析工具</title>
+      <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="/static/css/materialize.css">
+
+    <!-- Compiled and minified JavaScript -->
+</head>
+<body>
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">CA</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Comments Analysis Tool</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">CA: Comments Analysis</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Comments Analysis</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">一键式评论分析工具</h5>
+          <h6>输入实体网址，我们会自动收集并分析该实体的评论。</h6>
+      </div>
+      <div class="row center">
+            <form action="{% url 'result' %}" method="post" class="center-align">
+                {% csrf_token %}
+                <input class="z-depth-2 light-blue lighten-5" type="text" name="search_words"/>
+                <input type="submit" value="开始分析" class="btn-large waves-effect waves-light orange">
+            </form>
+      </div>
+      <br><br>
+    </div>
+  </div>
+</body>
+</html>
